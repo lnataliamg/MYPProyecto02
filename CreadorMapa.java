@@ -7,6 +7,13 @@ public class CreadorMapa extends InicializadorMapa{
       case nieve:
         mapa = new MapaNieve();
         break;
+
+      case fuego:
+        mapa = new MapaFuego();
+        break;
+      case agua:
+        mapa = new MapaAgua();
+        break;
     }
     return mapa;
   }

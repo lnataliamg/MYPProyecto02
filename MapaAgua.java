@@ -1,20 +1,28 @@
-import java.util.LinkedList;;
 import java.util.Iterator;
 
-public class MapaFuego implements IMapa{
-  private LinkedList casillas;
+public class MapaAgua implements IMapa{
+  private Casilla [] casillas;
+  int numeroActual = 0;
+  int numeroCasillas;
 
-  public MapaFuego(){
-    casillas = new LinkedList<Casilla>();
+  public MapaAgua(){
+    casillas = new Casilla[numeroCasillas];
   }
 
+  public void setNumeroCasillas(int numeroCasillas){
+    this.numeroCasillas = numeroCasillas;
+  }
   public void addCasilla(Casilla casilla){
-    casillas.add(casilla);
+    if(numeroActual >= numeroCasillas){
+      System.out.println("Ya no se pueden agregar más casillas");
+    }else{
+      casillas[numeroActual] = casilla;
+      numeroActual = numeroActual+1;
+    }
   }
 
   public Iterator createIterator(){
-    Iterator mapaFuegoIterator = casillas.iterator();
-    return mapaFuegoIterator;
+    return new IteratorMapaAgua(this.casillas);
   }
 
   public Casilla getCasilla(int index){
@@ -35,19 +43,14 @@ public class MapaFuego implements IMapa{
 @Override
   public Casilla [] getCasillasBonO(int n){
     Casilla[] casillasBuscadas = new Casilla[n];
-    System.out.println("Crea casilas buscadas");
     Iterator iterador = createIterator();
-    System.out.println("crea iterador");
     int i = 0;
     while(iterador.hasNext()){
-      System.out.println("tiene siguienteeee");
-      System.out.println(i);
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isBonoOski()){
         casillasBuscadas[i] = casilla;
-        System.out.println(casilla.isBonoOski());
-        i++;
       }
+      i++;
     }
     return casillasBuscadas;
   }
@@ -79,7 +82,7 @@ public class MapaFuego implements IMapa{
     }
     return casillasBuscadas;
   }
-  public LinkedList getCasillas(){
+  public Casilla[] getCasillas(){
     return casillas;
   }
 

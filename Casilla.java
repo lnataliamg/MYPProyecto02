@@ -1,28 +1,56 @@
 public class Casilla{
   private int numeroCasilla;
-  private  boolean bonoOski;
   private  boolean bonoDado;
+  private int typeDado; // tipo 1 dado doble tipo 2 dado 4 5 6 tipo 3 dado
+  private  boolean bonoOski;
+  private int numeroBonoOs;
   private  boolean castigo;
+  private int numeroCastigo;
 
+  /**
+  * Default Casilla constructor
+  */
+  public Casilla(int numeroCasilla, boolean bonoOski, boolean bonoDado, boolean castigo) {
+    super();
+    this.numeroCasilla = numeroCasilla;
+    this.bonoOski = bonoOski;
+    this.bonoDado = bonoDado;
+    this.castigo = castigo;
+  }
 
 
 	/**
 	* Default empty Casilla constructor
 	*/
 	public Casilla() {
-		super();
-	}
+    super();
+  }
 
-	/**
-	* Default Casilla constructor
-	*/
-	public Casilla(int numeroCasilla, boolean bonoOski, boolean bonoDado, boolean castigo) {
-		super();
-		this.numeroCasilla = numeroCasilla;
-		this.bonoOski = bonoOski;
-		this.bonoDado = bonoDado;
-		this.castigo = castigo;
-	}
+  public void setTypeDado(int typeDado){
+    this.typeDado = typeDado;
+  }
+
+  public int getTypeDado(){
+    return this.typeDado;
+  }
+
+  public void setNumeroBonosOskis(int numeroBonoOs){
+    this.numeroBonoOs = numeroBonoOs;
+  }
+
+  public int getNumeroBonosOs(){
+    return this.numeroBonoOs;
+  }
+
+  public void setNumeroCastigo(int numeroCastigo){
+    this.numeroCastigo = numeroCastigo;
+  }
+
+  public int getTypeNumeroCastigo(){
+    return this.numeroCastigo;
+  }
+
+
 
 
 

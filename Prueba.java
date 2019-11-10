@@ -25,6 +25,35 @@ public class Prueba{
       mapaNieve.addCasilla(new Casilla(4,false,true,false));
       System.out.println(mapaNieve.toString());
 
+      IMapa mapaFuego = creador.crearMapa(2);
+      mapaFuego.addCasilla(new Casilla(1,false,false,false));
+      mapaFuego.addCasilla(new Casilla(2,false,false,false));
+      mapaFuego.addCasilla(new Casilla(3,false,true,false));
+      mapaFuego.addCasilla(new Casilla(4,false,true,false));
+      mapaFuego.addCasilla(new Casilla(5,false,false,true));
+      mapaFuego.addCasilla(new Casilla(6,false,false,true));
+      mapaFuego.addCasilla(new Casilla(7,true,false,false));
+      mapaFuego.addCasilla(new Casilla(8,true,true,false));
+      Casilla[] casillasBonoO = new Casilla[1];
+      System.out.println("si crea esto");
+      Casilla[] casillasBonoD = new Casilla[2];
+        System.out.println("si crea esto");
+      Casilla[] casillasCastigo = new Casilla[2];
+        System.out.println("si crea esto");
+      casillasBonoO = mapaFuego.getCasillasBonO(1);
+        System.out.println("si crea estsssso");
+      for(int i = 0; i<casillasBonoO.length; i++){
+        System.out.println("esta es bnoOO" +casillasBonoO[i].toString());
+      }
+
+
+      CalculadoraDado calculadoraDado = new CalculadoraDado(new DadoSimple());
+      System.out.println(calculadoraDado.calcularDado());
+      calculadoraDado = new CalculadoraDado(new Dado68());
+      System.out.println(calculadoraDado.calcularDado());
+      calculadoraDado = new CalculadoraDado(new Dado46());
+      System.out.println(calculadoraDado.calcularDado());
+
   }
 
 
