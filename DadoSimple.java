@@ -5,6 +5,6 @@ public class DadoSimple implements IDado{
     return rand.nextInt((6-1)+1)+1;
   }
   public int tipoDado(){
-    return 0;
+    return 1;
   }
 }

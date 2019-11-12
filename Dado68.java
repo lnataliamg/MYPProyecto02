@@ -5,9 +5,9 @@ public class Dado68 implements IDado{
     return rand.nextInt((8-6)+1)+6;
   }
   public int tipoDado(){
-    return 0;
+    return 3;
   }
 
-  
+
 
 }

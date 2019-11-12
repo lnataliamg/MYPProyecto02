@@ -21,7 +21,6 @@ public class Nataxa extends Personaje{
     objPersonaje.setGorra(this.isGorra());
     objPersonaje.setMaquillaje(this.isMaquillaje());
     objPersonaje.setLentes(this.isLentes());
-    System.out.println("éxito");
     return objPersonaje;
   }
 

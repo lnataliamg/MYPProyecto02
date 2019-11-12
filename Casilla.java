@@ -1,7 +1,7 @@
 public class Casilla{
   private int numeroCasilla;
   private  boolean bonoDado;
-  private int typeDado; // tipo 1 dado doble tipo 2 dado 4 5 6 tipo 3 dado
+  private int typeDado; // tipo 1 dado simple tipo 2 dado 4 5 6 tipo 3 dado
   private  boolean bonoOski;
   private int numeroBonoOs;
   private  boolean castigo;
@@ -10,12 +10,15 @@ public class Casilla{
   /**
   * Default Casilla constructor
   */
-  public Casilla(int numeroCasilla, boolean bonoOski, boolean bonoDado, boolean castigo) {
+  public Casilla(int numeroCasilla, boolean bonoOski, int numeroBonoOs, boolean bonoDado, int typeDado, boolean castigo, int numeroCastigo) {
     super();
     this.numeroCasilla = numeroCasilla;
     this.bonoOski = bonoOski;
+    this.numeroBonoOs = numeroBonoOs;
     this.bonoDado = bonoDado;
+    this.typeDado = typeDado;
     this.castigo = castigo;
+    this.numeroCastigo = numeroCastigo;
   }
 
 
@@ -66,7 +69,7 @@ public class Casilla{
 
 	/**
 	* Sets new value of numeroCasilla
-	* @param
+	* @param  casillasBuscadas[i] = casilla;
 	*/
 	public void setNumeroCasilla(int numeroCasilla) {
 		this.numeroCasilla = numeroCasilla;

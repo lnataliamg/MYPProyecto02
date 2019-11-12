@@ -12,6 +12,7 @@ public class MapaFuego implements IMapa{
     casillas.add(casilla);
   }
 
+  @Override
   public Iterator createIterator(){
     Iterator mapaFuegoIterator = casillas.iterator();
     return mapaFuegoIterator;
@@ -35,17 +36,12 @@ public class MapaFuego implements IMapa{
 @Override
   public Casilla [] getCasillasBonO(int n){
     Casilla[] casillasBuscadas = new Casilla[n];
-    System.out.println("Crea casilas buscadas");
     Iterator iterador = createIterator();
-    System.out.println("crea iterador");
     int i = 0;
     while(iterador.hasNext()){
-      System.out.println("tiene siguienteeee");
-      System.out.println(i);
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isBonoOski()){
         casillasBuscadas[i] = casilla;
-        System.out.println(casilla.isBonoOski());
         i++;
       }
     }
@@ -60,8 +56,8 @@ public class MapaFuego implements IMapa{
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isBonoDado()){
         casillasBuscadas[i] = casilla;
+        i++;
       }
-      i++;
     }
     return casillasBuscadas;
   }
@@ -74,8 +70,8 @@ public class MapaFuego implements IMapa{
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isCastigo()){
         casillasBuscadas[i] = casilla;
+        i++;
       }
-      i++;
     }
     return casillasBuscadas;
   }

@@ -24,8 +24,8 @@ public class MapaNieve implements IMapa{
       Casilla casilla1 = (Casilla)iterador.next();
       if(index == i){
         casillaBuscada= casilla1;
+        i++;
       }
-      i++;
     }
     return casillaBuscada;
   }
@@ -40,8 +40,8 @@ public class MapaNieve implements IMapa{
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isBonoOski()){
         casillasBuscadas[i] = casilla;
+        i++;
       }
-      i++;
     }
     return casillasBuscadas;
   }
@@ -54,8 +54,8 @@ public class MapaNieve implements IMapa{
       Casilla casilla = (Casilla)iterador.next();
       if(casilla.isBonoDado()){
         casillasBuscadas[i] = casilla;
+        i++;
       }
-      i++;
     }
     return casillasBuscadas;
   }
