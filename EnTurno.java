@@ -19,10 +19,10 @@ public class EnTurno implements State{
         dadosJugador.remove(dadoElegir);
       }
       jugador.setDados(dadosJugador); //guardamos los dados del jugador, ya sea que haya usado simple o no
+      jugador.setState(jugador.getMoviendose());
     }else{
       System.out.println("No es el turno del jugador");
     }
-    jugador.setState(jugador.getMoviendose());
   }
 
   public void jugarMinijuego(){

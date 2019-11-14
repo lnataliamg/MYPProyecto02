@@ -48,13 +48,17 @@ public class Prueba{
       ArrayList<IDado> array = new ArrayList<IDado>();
       array.add(dadosimple);
       Jugador jugador = new Jugador(0, array, "Llo", nuevoPersonaje);
+      System.out.println(jugador.getOskis() + "tiene esos oskis");
       jugador.setPosicionActual(1);
       jugador.setTurno(true);
       jugador.setState(new EnTurno());
       jugador.tirarDado();
       System.out.println(jugador.getAvanceActual());
       System.out.println(jugador.getPosicionActual());
-
+      jugador.mover(mapaFuego);
+      System.out.println(jugador.getPosicionActual());
+      jugador.recogerRecompensa(mapaFuego);
+      System.out.println(jugador.getOskis() + "tiene esos oskis");
 
 
   }

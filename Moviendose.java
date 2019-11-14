@@ -12,12 +12,13 @@ public class Moviendose implements State{
   public void mover(IMapa mapa, Jugador jugador){
     if(jugador.getTurno()){
       jugador.mover(mapa,jugador.getAvanceActual());
+      jugador.setState(jugador.getLlegandoCasilla());
     }else{
       System.out.println("No es turno de este jugador");
     }
-    jugador.setState(jugador.getLlegandoCasilla());
   }
+
   public void recogerRecompensa(IMapa mapa, Jugador jugador){
-    System.out.println("No se puede mover, los jugadores juegan");
+    System.out.println("No se ha llegado a ninguna casilla");
   }
 }
