@@ -1,6 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author fernando
+ */
 import java.util.ArrayList;
-public class Prueba{
-  public static void main(String[] args) {
+
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String [] args) {
+        // TODO code application logic here
     System.out.println("Creamos los gestores");
     GestorPersonaje gp = new GestorPersonaje();
     System.out.println("Obtenemos a los persones originaeles");
@@ -19,6 +36,24 @@ public class Prueba{
       System.out.println("El nuevo personaje festeja como Nataxa");
       nuevoPersonaje.festejarTemplate();
       System.out.println("Vamos a crear un mapa de nieve");
+
+    System.out.println("Obtenemos a los persones originaeles");
+    Personaje osukaru = gp.getPersonaje("Osukaru");
+    System.out.println("-----------------------------------");
+    System.out.println("Personaje 2  se llama " + osukaru.getNombre());
+    nataxa.festejarTemplate();
+    System.out.println("-----Creamos un clon de Osukaru----");
+      Personaje nuevoPersonaje2 = gp.getClon("Osukaru");
+      nuevoPersonaje2.setNombre("Que hay");
+      nuevoPersonaje2.setNombre("Joshi");
+      nuevoPersonaje2.setLentes(true);
+      if(nuevoPersonaje2.isLentes()){
+        System.out.println("El nuevo personaje tiene lentes tiene lentes");
+      }
+      System.out.println("El nuevo personaje festeja como Osukaru");
+      nuevoPersonaje2.festejarTemplate();
+      System.out.println("Vamos a crear un mapa de nieve");
+
       CreadorMapa creador= new CreadorMapa();
 
 
@@ -47,12 +82,20 @@ public class Prueba{
       IDado dadosimple = new DadoSimple();
       ArrayList<IDado> array = new ArrayList<IDado>();
       array.add(dadosimple);
+
       Jugador jugador = new Jugador(0, array, "Llo", nuevoPersonaje);
-      System.out.println(jugador.getOskis() + "tiene esos oskis");
       jugador.setPosicionActual(1);
       jugador.setTurno(true);
       jugador.setState(new EnTurno());
       jugador.tirarDado();
+      System.out.println(jugador.getAvanceActual());
+      System.out.println(jugador.getPosicionActual());
+
+      Jugador jugador2 = new Jugador(0, array, "Oski", nuevoPersonaje2);
+      jugador2.setPosicionActual(1);
+      jugador2.setTurno(true);
+      jugador2.setState(new EnTurno());
+      jugador2.tirarDado();
       System.out.println(jugador.getAvanceActual());
       System.out.println(jugador.getPosicionActual());
       jugador.mover(mapaFuego);
@@ -61,7 +104,15 @@ public class Prueba{
       System.out.println(jugador.getOskis() + "tiene esos oskis");
 
 
-  }
+      GestorMinijuegos gestorMinijuegos = new GestorMinijuegos();
+      Minijuego game = new PPoT(jugador, jugador2);
+      gestorMinijuegos.addMinijuego(game);
+      Minijuego elegido = gestorMinijuegos.elegirMinijuego();
+
+
+      elegido.ejecutarJuego();
+    }
+
 
 
 }
