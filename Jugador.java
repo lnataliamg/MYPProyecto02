@@ -182,12 +182,12 @@ public class Jugador{
       }
     }
 
-    public void tirarDado(){
-      state.tirarDado(this);
+    public void tirarDado(int n, Jugador jugador){
+      state.tirarDado(n, this);
     }
 
-    public void jugarMinijuego(){
-      state.jugarMinijuego();
+    public void jugarMinijuego(int n, Jugador jugador2){
+      state.jugarMinijuego( n, this, jugador2);
     }
 
     public void mover(IMapa mapa){

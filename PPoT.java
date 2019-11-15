@@ -207,7 +207,6 @@ public class PPoT extends Minijuego{
         }
     }
 
-    @Override
     public void actionPerformed(ActionEvent ae) {
         /*if (ae.getSource() == botonOk) {
             frameWin.setVisible(false);
