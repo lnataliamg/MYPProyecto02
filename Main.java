@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/**
- *
- * @author fernando
- */
 import java.util.ArrayList;
 
 public class Main {
@@ -101,7 +90,7 @@ public class Main {
       jugador.mover(mapaFuego);
       System.out.println(jugador.getPosicionActual());
       jugador.recogerRecompensa(mapaFuego);
-      System.out.println(jugador.getOskis() + "tiene esos oskis");
+      System.out.println("\n"+jugador.getOskis() + " tiene esos oskis\n");
 
 
       GestorMinijuegos gestorMinijuegos = new GestorMinijuegos();
@@ -111,6 +100,8 @@ public class Main {
 
 
       elegido.ejecutarJuego();
+      System.out.println(""+jugador.getName()+" "+jugador.getOskis() + " tiene esos oskis\n");
+      System.out.println(""+jugador2.getName()+" "+jugador2.getOskis() + " tiene esos oskis\n");
     }
 
 
