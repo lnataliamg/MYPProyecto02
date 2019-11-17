@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 public class EnTurno implements State{
   Scanner sc = new Scanner(System.in);
   public void tirarDado(Jugador jugador){
@@ -13,7 +15,21 @@ public class EnTurno implements State{
         for (int i = 0; i<dadosJugador.size(); i++) {
           System.out.println(i + ".-tipo de dado: " + dadosJugador.get(i).tipoDado());
         }
-        int dadoElegir = sc.nextInt(); //eliges el dado
+
+        int dadoElegir = -1;
+
+        while(dadoElegir > dadosJugador.size() || dadoElegir < 0){
+          
+            dadoElegir = sc.nextInt(); //eliges el dado
+            
+            if(dadoElegir > dadosJugador.size() || dadoElegir < 0){
+              System.out.println("No tienes ese dado, vuelve a elegir");
+            }else{
+              break;
+            }
+          
+        }
+
         cantidad = jugador.tirarDado(dadoElegir+1); //el jugador va a tirar el dado
         jugador.setAvanceActual(cantidad); //guardamos la cantidad que va a avanzar el jugador
         //Vamos a eliminar el dado especial que uso el jugador, el normal se quedara
