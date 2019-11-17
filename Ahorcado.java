@@ -104,9 +104,6 @@ public class Ahorcado extends Minijuego{
     public void ejecutarJuego() {
 
         try {
-                synchronized (tiempo) {
-                    tiempo.wait();
-                }
         
 
         frame = new JFrame("Minijuego"); //Se crea Ventana con titulo "Minijuego"
@@ -144,6 +141,10 @@ public class Ahorcado extends Minijuego{
         panel.setBackground(Color.getHSBColor(200, 100, 100));
       
         frame.setVisible(true); // Hace visible la ventana
+
+        synchronized (tiempo) {
+                    tiempo.wait();
+                }
 
         } catch (InterruptedException e) {
                 e.printStackTrace();
