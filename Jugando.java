@@ -14,6 +14,7 @@ public class Jugando implements State{
     gestorMinijuegos.addMinijuego(game);
     gestorMinijuegos.addMinijuego(game1);
     Minijuego elegido = gestorMinijuegos.elegirMinijuego();
+    System.out.println(elegido.getNombreJuego());
     elegido.ejecutarJuego();
     /*try{ 
         Thread.sleep(1000); 
