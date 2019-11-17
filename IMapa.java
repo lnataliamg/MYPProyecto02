@@ -6,4 +6,5 @@ public interface IMapa{
   public Iterator createIterator();
   public void addCasilla(Casilla casilla);
   public Casilla getCasilla(int n);
+
 }

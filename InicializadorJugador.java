@@ -9,6 +9,7 @@ public class InicializadorJugador{
     ArrayList <IDado> dados = new ArrayList <IDado> ();
     dados.add(new DadoSimple());
     Jugador jugador = new Jugador(0, dados, nombreJugador,personaje);
+    jugador.setPosicionActual(1);
     return jugador;
   }
 

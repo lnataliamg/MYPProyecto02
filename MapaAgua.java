@@ -3,7 +3,7 @@ import java.util.Iterator;
 public class MapaAgua implements IMapa{
   private Casilla [] casillas;
   int numeroActual = 0;
-  int numeroCasillas;
+  int numeroCasillas = 30;
 
   public MapaAgua(){
     casillas = new Casilla[numeroCasillas];
@@ -33,8 +33,8 @@ public class MapaAgua implements IMapa{
       Casilla casilla1 = (Casilla)iterador.next();
       if(index == i){
         casillaBuscada= casilla1;
-        i++;
       }
+      i++;
     }
     return casillaBuscada;
   }

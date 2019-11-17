@@ -182,8 +182,12 @@ public class Jugador{
       }
     }
 
-    public void tirarDado(int n, Jugador jugador){
-      state.tirarDado(n, this);
+    public void festejar(){
+      personaje.festejarTemplate();
+    }
+
+    public void tirarDado(Jugador jugador){
+      state.tirarDado(this);
     }
 
     public void jugarMinijuego(int n, Jugador jugador2){

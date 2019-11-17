@@ -87,10 +87,12 @@ public class Main {
       jugador.setPosicionActual(1);
       jugador.setTurno(true);
       jugador.setState(new EnTurno());
-      jugador.tirarDado();
+      jugador.tirarDado(1, jugador);
       System.out.println(jugador.getAvanceActual());
       System.out.println(jugador.getPosicionActual());
-
+      jugador.mover(mapaFuego);
+      jugador.recogerRecompensa(mapaFuego);
+/*
       Jugador jugador2 = new Jugador(0, array, "Oski", nuevoPersonaje2);
       jugador2.setPosicionActual(1);
       jugador2.setTurno(true);
@@ -110,7 +112,7 @@ public class Main {
       Minijuego elegido = gestorMinijuegos.elegirMinijuego();
 
 
-      elegido.ejecutarJuego();
+      elegido.ejecutarJuego();*/
     }
 
 

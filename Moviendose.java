@@ -1,5 +1,5 @@
 public class Moviendose implements State{
-  public void tirarDado(int n, Jugador jugador){
+  public void tirarDado(Jugador jugador){
     if(jugador.getTurno()){
       System.out.println("El jugador ya ha tirado");
     }else{
@@ -12,7 +12,6 @@ public class Moviendose implements State{
   public void mover(IMapa mapa, Jugador jugador){
     if(jugador.getTurno()){
       jugador.mover(mapa,jugador.getAvanceActual());
-      
       jugador.setState(jugador.getLlegandoCasilla());
     }else{
       System.out.println("No es turno de este jugador");

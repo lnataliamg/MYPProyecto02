@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class EnTurno implements State{
   Scanner sc = new Scanner(System.in);
-  public void tirarDado(int n, Jugador jugador){
-    if(n %5 != 0){
+  public void tirarDado(Jugador jugador){
+//    if(n %5 != 0){
 
       int cantidad=0;
       ArrayList<IDado> dadosJugador = jugador.getDados(); //obtenemos los dados que tiene el jugador actualmente
@@ -25,10 +25,10 @@ public class EnTurno implements State{
       }else{
         System.out.println("No es el turno del jugador");
       }
-    }else{
-      System.out.println("Es momento de jugar un minijuego");
+/*    }else{
+      System.out.println("Es momento de jugar un JUEGOASDOADSÑFLSÑFASK");
       jugador.setState(jugador.getJugando());
-    }
+    }*/
   }
 
   public void jugarMinijuego(int n, Jugador j1, Jugador j2){

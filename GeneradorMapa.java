@@ -1,14 +1,19 @@
 //clase que crea un mapa con una longitud especifica y sus casillas
 public class GeneradorMapa{
-  CreadorMapa creador = new CreadorMapa();
   public GeneradorMapa(){}
 
-
-
   public IMapa crearMapa(int tipoMapa){
+    CreadorMapa creador = new CreadorMapa();
     IMapa mapa = creador.crearMapa(tipoMapa);
+
+
+
     switch (tipoMapa) {
-      case 3:
+
+
+
+      case 1:
+
       mapa.addCasilla(new Casilla(1,true,5,false,0,false,0));
       mapa.addCasilla(new Casilla(2,false,0,false,0,false,0));
       mapa.addCasilla(new Casilla(3,false,0,true,2,false,0));
@@ -24,7 +29,7 @@ public class GeneradorMapa{
       mapa.addCasilla(new Casilla(13,false,0,false,0,false,0));
       mapa.addCasilla(new Casilla(14,true,10,false,0,false,0));
       mapa.addCasilla(new Casilla(15,false,0,false,0,true,6));
-      return mapa;
+      break;
 
       case 2:
       mapa.addCasilla(new Casilla(1,true,5,false,0,false,0));
@@ -47,9 +52,8 @@ public class GeneradorMapa{
       mapa.addCasilla(new Casilla(18,false,0,false,0,false,0));
       mapa.addCasilla(new Casilla(19,false,0,false,0,false,20));
       mapa.addCasilla(new Casilla(20,true,10,false,0,false,0));
-      return mapa;
-
-      case 1:
+      break;
+      case 3:
       mapa.addCasilla(new Casilla(1,true,5,false,0,false,0));
       mapa.addCasilla(new Casilla(2,true,5,false,0,false,0));
       mapa.addCasilla(new Casilla(3,false,0,true,2,false,0));
@@ -80,9 +84,10 @@ public class GeneradorMapa{
       mapa.addCasilla(new Casilla(28,false,0,false,0,false,0));
       mapa.addCasilla(new Casilla(29,true,15,false,0,false,0));
       mapa.addCasilla(new Casilla(30,true,15,false,0,false,0));
-      return mapa;
+      break;
 
     }
+
     return mapa;
   }
 }

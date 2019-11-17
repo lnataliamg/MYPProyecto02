@@ -17,15 +17,15 @@ public class MapaNieve implements IMapa{
   }
 
   public Casilla getCasilla(int index){
-    Casilla casillaBuscada = null;
+    Casilla casillaBuscada = new Casilla();
     Iterator iterador = createIterator();
     int i = 1;
     while(iterador.hasNext()){
       Casilla casilla1 = (Casilla)iterador.next();
       if(index == i){
-        casillaBuscada= casilla1;
-        i++;
+        casillaBuscada=casilla1;
       }
+      i++;
     }
     return casillaBuscada;
   }

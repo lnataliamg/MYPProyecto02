@@ -1,5 +1,5 @@
 public class LlegandoCasilla implements State{
-  public void tirarDado(int n, Jugador jugador){
+  public void tirarDado(Jugador jugador){
     if(jugador.getTurno()){
       System.out.println("El jugador ya ha tirado");
     }else{
@@ -20,14 +20,13 @@ public class LlegandoCasilla implements State{
     if(jugador.getTurno()){
       int posicionActual = jugador.getPosicionActual();
       Casilla casillaActual = mapa.getCasilla(posicionActual);
-      System.out.println("aqui si");
       if(casillaActual.isBonoOski()){
-      
         jugador.setOskis(jugador.getOskis()+ casillaActual.getNumeroBonosOs());
       }else if(casillaActual.isBonoDado()){
         jugador.addDado(casillaActual.getTypeDado());
       }else if(casillaActual.isCastigo()){
         jugador.setOskis(jugador.getOskis() - casillaActual.getTypeNumeroCastigo());
+        System.out.println("entra aqui");
       }
     }else{
       System.out.println("No es turno de este jugador");
