@@ -10,11 +10,18 @@ public class Jugando implements State{
     Minijuego game = new PPoT(jugador1, jugador2);
     //para agregar un minijuego sería
     // game1 = new NameGame(jugador1, jugador2)
+    Minijuego game1 = new Ahorcado(jugador1, jugador2);
     gestorMinijuegos.addMinijuego(game);
+    gestorMinijuegos.addMinijuego(game1);
     Minijuego elegido = gestorMinijuegos.elegirMinijuego();
     elegido.ejecutarJuego();
-    jugador1.setState(jugador1.getEnTurno());
-    jugador2.setState(jugador2.getEnTurno());
+    try{ 
+        Thread.sleep(5000); 
+    }catch(InterruptedException e) { 
+        System.out.println("Thread Interrupted"); 
+    }
+    //jugador1.setState(jugador1.getEnTurno());
+    //jugador2.setState(jugador2.getEnTurno());
 
   }else{
     jugador1.setState(jugador1.getEnTurno());

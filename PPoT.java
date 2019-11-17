@@ -74,6 +74,9 @@ public class PPoT extends Minijuego{
                 
                 frameGame.setVisible(false);
                 frameGame.dispose();
+
+                jugador1.setState(jugador1.getEnTurno());
+                jugador2.setState(jugador2.getEnTurno());
             }
             
         });//Accion del Boton
@@ -114,6 +117,9 @@ public class PPoT extends Minijuego{
                 
                 frameGame.setVisible(false);
                 frameGame.dispose();
+
+                jugador1.setState(jugador1.getEnTurno());
+                jugador2.setState(jugador2.getEnTurno());
             }
             
         });//Accion del Boton

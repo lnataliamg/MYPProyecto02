@@ -36,19 +36,19 @@ public class InicializadorPersonaje{
           case 1:
           System.out.println("Elegiste a -Danyal-");
           personajeCreado = cambiarCaracteristicasPersonaje(danyal);
-          break;
+          return personajeCreado;
           case 2:
           System.out.println("Elegiste a -Raymond-");
           personajeCreado = cambiarCaracteristicasPersonaje(raymond);
-          break;
+          return personajeCreado;
           case 3:
           System.out.println("Elegiste a -Nataxa-");
           personajeCreado = cambiarCaracteristicasPersonaje(nataxa);
-          break;
+          return personajeCreado;
           case 4:
           System.out.println("Elegiste a -Osukaru-");
           personajeCreado = cambiarCaracteristicasPersonaje(osukaru);
-          break;
+          return personajeCreado;
         }
         break;
 
@@ -72,7 +72,6 @@ public class InicializadorPersonaje{
         return osukaru;
         case 4:
         System.out.println("Elegiste a -Osukaru-");
-
         return nataxa;
       }
       break;
@@ -106,8 +105,9 @@ public class InicializadorPersonaje{
     Personaje personaje = gp.getClon(personajeOriginal.getNombre());
     System.out.println("Elige el nombre de tu nuevo presonaje");
     System.out.println("Nombre: ");
-    String nuevoNombre = s.nextLine();
     s.nextLine();
+    String nuevoNombre = s.nextLine();
+
     personaje.setNombre(nuevoNombre);
     System.out.println("Elige si tu personaje va a tener lentes");
     System.out.println("1. Sí");

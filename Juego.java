@@ -17,20 +17,25 @@ public class Juego{
       Personaje personaje2 = inPersonaje.crearPersonajeJugador();
       Jugador jugador2 = inJugador.crearJugador(nombre2, personaje2);
       jugador2.setTurno(false);
+      System.out.println("eñ nombre del jug1 " + personaje2.getNombre() + "...");
+
+      System.out.println("eñ nombre del jug222222 " + personaje2.getNombre()+ "...");
+
 
       int tipoMapa = inJuego.obtenerTipoMapa();
       int cuantosTurnosSon = inJuego.elegirNumTurnos();
-      switch (cuantosTurnosSon) {
-        case 1:
-        cuantosTurnosSon = 5;
-        break;
-        case 2:
-        cuantosTurnosSon = 10;
-        break;
-        case 3:
-        cuantosTurnosSon = 15;
-        break;
-      }
+        switch (cuantosTurnosSon) {
+          case 1:
+            cuantosTurnosSon = 5;
+          break;
+          case 2:
+            cuantosTurnosSon = 10;
+          break;
+          case 3:
+            cuantosTurnosSon = 15;
+          break;
+        }
+
       IMapa mapa = generadorMapa.crearMapa(tipoMapa);
 
       int contadorRondas = 1;
@@ -48,13 +53,19 @@ public class Juego{
         jugador1.mover(mapa);
         System.out.println("El jugador1 después de tirar está en la casilla " + jugador1.getPosicionActual());
         //sí avanza
+        int m = jugador1.getOskis();
         jugador1.recogerRecompensa(mapa);
-        System.out.println("El numero de oskis del jugador1 paso de 0 a "+jugador1.getOskis());
+        if (m == jugador1.getOskis()) {
+          System.out.println("El numero de oskis del jugador2 son "+jugador1.getOskis());
+        }else{
+          System.out.println("El numero de oskis del jugador2 paso de "+m+" a "+jugador1.getOskis());
+        }
         System.out.println("Ahora el jugador1 tiene los siguentes dados:");
 
         for(int i = 0; i<jugador1.getDados().size();i++){
           System.out.println(jugador1.getDados().toString());
         }
+
         jugador1.setTurno(false);
         System.out.println("-----------Turno jugador 2-------------------");
         jugador2.setTurno(true);
@@ -64,10 +75,14 @@ public class Juego{
         System.out.println("El juagdor2 va a avanzar " + jugador2.getAvanceActual());
         jugador2.mover(mapa);
         System.out.println("El jugador2 avanzó hasta la casilla" + jugador2.getPosicionActual());
+        int n = jugador2.getOskis();
         jugador2.recogerRecompensa(mapa);
 
-
-        System.out.println("El numero de oskis del jugador2 paso de 0 a "+jugador2.getOskis());
+        if (n == jugador2.getOskis()) {
+          System.out.println("El numero de oskis del jugador2 son "+jugador2.getOskis());
+        }else{
+          System.out.println("El numero de oskis del jugador2 paso de "+n+" a "+jugador2.getOskis());
+        }
         System.out.println("Ahora el jugador2 tiene los siguentes dados:");
          jugador1.getDados();
 
@@ -79,6 +94,12 @@ public class Juego{
 
         contadorRondas++;
       } while (contadorRondas < cuantosTurnosSon+1);
+
+      try{ 
+        Thread.sleep(5000); 
+      }catch(InterruptedException e) { 
+        System.out.println("Thread Interrupted"); 
+      }
 
       System.out.println("El juego finalizó :DDDDDDDDDDDDD");
       System.out.println("El ganador es: ");

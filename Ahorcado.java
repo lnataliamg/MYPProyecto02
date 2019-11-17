@@ -473,7 +473,6 @@ public class Ahorcado extends Minijuego{
         bP2.setBounds(320,280,150,25);
         
         n = (int)(rnd.nextDouble()*2+0);
-        System.out.println(n);
         
         onPlay(words[n],n);
                 
@@ -518,6 +517,9 @@ public class Ahorcado extends Minijuego{
                 
                 frameGame.setVisible(false);
                 frameGame.dispose();
+
+                jugador1.setState(jugador1.getEnTurno());
+                jugador2.setState(jugador2.getEnTurno());
             }
             
         });//Accion del Boton
@@ -547,13 +549,25 @@ public class Ahorcado extends Minijuego{
     }
 
     private void onPlay(String word,int n) {
-        System.out.println(word);
         if(n == 0){
             bP1.addActionListener(new ActionListener(){
                
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("a".equalsIgnoreCase(tfP1.getText())){
+                    if (word.equalsIgnoreCase(tfP1.getText())) {
+                        frameGame.add(caballosA);
+                        frameGame.add(caballosC);
+                        frameGame.add(caballosB);
+                        frameGame.add(caballosL);
+                        frameGame.add(caballosO);
+                        frameGame.add(caballosS);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador1);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("a".equalsIgnoreCase(tfP1.getText())){
                         frameGame.add(caballosA);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -571,6 +585,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if(j == aux6.length-1){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -592,6 +607,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -613,6 +629,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -634,6 +651,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -655,6 +673,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -675,8 +694,8 @@ public class Ahorcado extends Minijuego{
                             if(aux6[j] != caballoWin[j]){
                                 break;
                             }else if((j == aux6.length-1)){
-                                System.out.println("son iguales");
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                     }else{
@@ -729,6 +748,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
@@ -741,7 +761,20 @@ public class Ahorcado extends Minijuego{
                 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("a".equalsIgnoreCase(tfP2.getText())){
+                    if (word.equalsIgnoreCase(tfP2.getText())) {
+                        frameGame.add(caballosA);
+                        frameGame.add(caballosC);
+                        frameGame.add(caballosB);
+                        frameGame.add(caballosL);
+                        frameGame.add(caballosO);
+                        frameGame.add(caballosS);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador2);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("a".equalsIgnoreCase(tfP2.getText())){
                         frameGame.add(caballosA);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -759,6 +792,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -780,6 +814,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -801,6 +836,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -822,6 +858,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -843,6 +880,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -865,12 +903,8 @@ public class Ahorcado extends Minijuego{
                             }else if((aux6[j] == caballoWin[j]) && (j == aux6.length-1)){
                                 System.out.println("son iguales");
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
-                        }
-                        
-                        for (int j = 0; j < aux6.length; j++) {
-                            System.out.println("aux6: "+j+aux6[j]);
-                            System.out.println("caballoWin: "+j+caballoWin[j]);
                         }
                     }else{
                         errP2++;
@@ -922,6 +956,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
@@ -938,7 +973,20 @@ public class Ahorcado extends Minijuego{
                
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("a".equalsIgnoreCase(tfP1.getText())){
+                    if (word.equalsIgnoreCase(tfP1.getText())) {
+                        frameGame.add(dalmatasA);
+                        frameGame.add(dalmatasL);
+                        frameGame.add(dalmatasD);
+                        frameGame.add(dalmatasM);
+                        frameGame.add(dalmatasT);
+                        frameGame.add(caballosS);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador1);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("a".equalsIgnoreCase(tfP1.getText())){
                         frameGame.add(dalmatasA);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -956,6 +1004,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if(j == aux6.length-1){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -977,6 +1026,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -998,6 +1048,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1019,6 +1070,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1040,6 +1092,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1062,6 +1115,7 @@ public class Ahorcado extends Minijuego{
                             }else if((j == aux6.length-1)){
                                 System.out.println("son iguales");
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                     }else{
@@ -1114,6 +1168,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
@@ -1126,7 +1181,20 @@ public class Ahorcado extends Minijuego{
                 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("a".equalsIgnoreCase(tfP2.getText())){
+                    if (word.equalsIgnoreCase(tfP2.getText())) {
+                        frameGame.add(dalmatasA);
+                        frameGame.add(dalmatasL);
+                        frameGame.add(dalmatasD);
+                        frameGame.add(dalmatasM);
+                        frameGame.add(dalmatasT);
+                        frameGame.add(caballosS);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador2);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("a".equalsIgnoreCase(tfP2.getText())){
                         frameGame.add(dalmatasA);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -1144,6 +1212,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1165,6 +1234,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1186,6 +1256,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1207,6 +1278,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1228,6 +1300,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1249,6 +1322,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == dalmatasWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1302,6 +1376,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
@@ -1317,7 +1392,20 @@ public class Ahorcado extends Minijuego{
                
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("g".equalsIgnoreCase(tfP1.getText())){
+                    if (word.equalsIgnoreCase(tfP1.getText())) {
+                        frameGame.add(garrafonG);
+                        frameGame.add(garrafonA);
+                        frameGame.add(garrafonR);
+                        frameGame.add(garrafonF);
+                        frameGame.add(garrafonN);
+                        frameGame.add(caballosO);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador1);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("g".equalsIgnoreCase(tfP1.getText())){
                         frameGame.add(garrafonG);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -1335,6 +1423,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if(j == aux6.length-1){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1356,6 +1445,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1377,6 +1467,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1398,6 +1489,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1419,6 +1511,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1440,6 +1533,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((j == aux6.length-1)){
                                 ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                     }else{
@@ -1492,6 +1586,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
@@ -1504,7 +1599,20 @@ public class Ahorcado extends Minijuego{
                 
                 @Override
                 public void actionPerformed(ActionEvent ae) {
-                    if("g".equalsIgnoreCase(tfP2.getText())){
+                    if (word.equalsIgnoreCase(tfP2.getText())) {
+                        frameGame.add(garrafonG);
+                        frameGame.add(garrafonA);
+                        frameGame.add(garrafonR);
+                        frameGame.add(garrafonF);
+                        frameGame.add(garrafonN);
+                        frameGame.add(caballosO);
+
+                        frameGame.setVisible(false);
+                        frameGame.setVisible(true);
+                        ganador(jugador2);
+                        System.out.println("La palabra es/fue "+word);
+                        
+                    }else if("g".equalsIgnoreCase(tfP2.getText())){
                         frameGame.add(garrafonG);
                         frameGame.setVisible(false);
                         frameGame.setVisible(true);
@@ -1522,6 +1630,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1543,6 +1652,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1564,6 +1674,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1585,6 +1696,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1606,6 +1718,7 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
                         
@@ -1627,14 +1740,10 @@ public class Ahorcado extends Minijuego{
                                 break;
                             }else if((aux6[j] == garrafonWin[j]) && (j == aux6.length-1)){
                                 ganador(jugador2);
+                                System.out.println("La palabra es/fue "+word);
                             }
                         }
-                        
-                        for (int j = 0; j < aux6.length; j++) {
-                            System.out.println("aux6: "+j+aux6[j]);
-                            System.out.println("garrafonWin: "+j+garrafonWin[j]);
-                        }
-                       
+                                               
                     }else{
                         errP2++;
                     }
@@ -1685,6 +1794,7 @@ public class Ahorcado extends Minijuego{
                             frameGame.setVisible(false);
                             frameGame.setVisible(true);
                             ganador(jugador1);
+                                System.out.println("La palabra es/fue "+word);
                             break;
                         default:
                             break;
