@@ -17,9 +17,9 @@ public class Juego{
       Personaje personaje2 = inPersonaje.crearPersonajeJugador();
       Jugador jugador2 = inJugador.crearJugador(nombre2, personaje2);
       jugador2.setTurno(false);
-      System.out.println("eñ nombre del jug1 " + personaje2.getNombre() + "...");
+      System.out.println("el nombre del personaje1 es: " + personaje1.getNombre() + "...");
 
-      System.out.println("eñ nombre del jug222222 " + personaje2.getNombre()+ "...");
+      System.out.println("el nombre del personaje2 es: " + personaje2.getNombre()+ "...");
 
 
       int tipoMapa = inJuego.obtenerTipoMapa();
@@ -95,11 +95,11 @@ public class Juego{
         contadorRondas++;
       } while (contadorRondas < cuantosTurnosSon+1);
 
-      try{ 
-        Thread.sleep(5000); 
+      /*try{ 
+        Thread.sleep(1000); 
       }catch(InterruptedException e) { 
         System.out.println("Thread Interrupted"); 
-      }
+      }*/
 
       System.out.println("El juego finalizó :DDDDDDDDDDDDD");
       System.out.println("El ganador es: ");

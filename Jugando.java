@@ -15,11 +15,11 @@ public class Jugando implements State{
     gestorMinijuegos.addMinijuego(game1);
     Minijuego elegido = gestorMinijuegos.elegirMinijuego();
     elegido.ejecutarJuego();
-    try{ 
-        Thread.sleep(5000); 
+    /*try{ 
+        Thread.sleep(1000); 
     }catch(InterruptedException e) { 
         System.out.println("Thread Interrupted"); 
-    }
+    }*/
     //jugador1.setState(jugador1.getEnTurno());
     //jugador2.setState(jugador2.getEnTurno());
 

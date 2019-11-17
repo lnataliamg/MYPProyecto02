@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 
 public class Ahorcado extends Minijuego{
 
+    private volatile boolean running = true;
+    private volatile boolean paused = false;
+    private final Object tiempo = new Object();
+
     private JFrame frame;
     private JFrame frameWin;
     private JFrame frameGame;
@@ -98,6 +102,13 @@ public class Ahorcado extends Minijuego{
 
     @Override
     public void ejecutarJuego() {
+
+        try {
+                synchronized (tiempo) {
+                    tiempo.wait();
+                }
+        
+
         frame = new JFrame("Minijuego"); //Se crea Ventana con titulo "Minijuego"
         panel = new JPanel();
       
@@ -132,7 +143,11 @@ public class Ahorcado extends Minijuego{
         
         panel.setBackground(Color.getHSBColor(200, 100, 100));
       
-        frame.setVisible(true); // Hace visible la ventana    
+        frame.setVisible(true); // Hace visible la ventana
+
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
     }
     
     public void juego(){
@@ -517,6 +532,10 @@ public class Ahorcado extends Minijuego{
                 
                 frameGame.setVisible(false);
                 frameGame.dispose();
+
+                synchronized (tiempo) {
+                  tiempo.notify();
+                }
 
                 jugador1.setState(jugador1.getEnTurno());
                 jugador2.setState(jugador2.getEnTurno());

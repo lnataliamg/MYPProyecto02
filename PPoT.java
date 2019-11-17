@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class PPoT extends Minijuego{
+
+    private volatile boolean running = true;
+    private volatile boolean paused = false;
+    private final Object tiempo = new Object();
     
     private JFrame frame;
     private JFrame frameGame;
@@ -75,6 +79,10 @@ public class PPoT extends Minijuego{
                 frameGame.setVisible(false);
                 frameGame.dispose();
 
+                synchronized (tiempo) {
+                  tiempo.notify();
+                }
+
                 jugador1.setState(jugador1.getEnTurno());
                 jugador2.setState(jugador2.getEnTurno());
             }
@@ -117,6 +125,10 @@ public class PPoT extends Minijuego{
                 
                 frameGame.setVisible(false);
                 frameGame.dispose();
+
+                synchronized (tiempo) {
+                  tiempo.notify();
+                }
 
                 jugador1.setState(jugador1.getEnTurno());
                 jugador2.setState(jugador2.getEnTurno());
@@ -312,6 +324,10 @@ public class PPoT extends Minijuego{
     }
 
     public void ejecutarJuego() {
+
+        try {
+                
+
         frame = new JFrame("Minijuego"); //Se crea Ventana con titulo "Minijuego"
       
         frame.setSize(300, 150); //Tamaño venta na x,y
@@ -342,5 +358,12 @@ public class PPoT extends Minijuego{
         frame.add(iniciar);
       
         frame.setVisible(true); // Hace visible la ventana
+        
+        synchronized (tiempo) {
+                    tiempo.wait();
+                }
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
     }
 }
