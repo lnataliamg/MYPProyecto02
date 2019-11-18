@@ -11,18 +11,14 @@ public class Jugando implements State{
     //para agregar un minijuego sería
     // game1 = new NameGame(jugador1, jugador2)
     Minijuego game1 = new Ahorcado(jugador1, jugador2);
+    Minijuego game2 = new ChooseGame(jugador1, jugador2);
     gestorMinijuegos.addMinijuego(game);
     gestorMinijuegos.addMinijuego(game1);
+    gestorMinijuegos.addMinijuego(game2);
     Minijuego elegido = gestorMinijuegos.elegirMinijuego();
     System.out.println(elegido.getNombreJuego());
     elegido.ejecutarJuego();
-    /*try{ 
-        Thread.sleep(1000); 
-    }catch(InterruptedException e) { 
-        System.out.println("Thread Interrupted"); 
-    }*/
-    //jugador1.setState(jugador1.getEnTurno());
-    //jugador2.setState(jugador2.getEnTurno());
+
 
   }else{
     jugador1.setState(jugador1.getEnTurno());

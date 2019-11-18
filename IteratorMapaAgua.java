@@ -14,6 +14,7 @@ public class IteratorMapaAgua implements Iterator{
     posicion++;
     return casillaRecorrida;
   }
+  
   @Override
   public boolean hasNext(){
     if(posicion >= casillas.length || casillas[posicion] == null){

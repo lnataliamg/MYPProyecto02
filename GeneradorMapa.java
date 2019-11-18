@@ -6,11 +6,7 @@ public class GeneradorMapa{
     CreadorMapa creador = new CreadorMapa();
     IMapa mapa = creador.crearMapa(tipoMapa);
 
-
-
     switch (tipoMapa) {
-
-
 
       case 1:
 

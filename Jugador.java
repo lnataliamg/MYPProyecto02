@@ -1,9 +1,6 @@
 import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Random;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -11,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class Jugador{
   private int oskis;
@@ -28,7 +24,7 @@ public class Jugador{
   State llegandoCasilla;
   State jugando;
   
-    private Object tiempo = new Object();
+    private final Object tiempo = new Object();
     private JFrame frame;
     private JPanel panel;
     private JLabel titulo;
@@ -258,7 +254,7 @@ public class Jugador{
         
         try {
         
-        frame = new JFrame("Personaje"); //Se crea Ventana con titulo "Minijuego"
+        frame = new JFrame("Jugador: "+getName()); //Se crea Ventana con titulo "Minijuego"
       
         frame.setSize(300, 300); //Tamaño venta na x,y
         frame.setLocationRelativeTo(null); //Posicion siempre en el centro
@@ -266,9 +262,9 @@ public class Jugador{
         frame.setResizable(false);
         frame.setLayout(null); // poner que aparezcan todos los tipos de canvas
       
-        titulo = new JLabel(p.getNombre());
+        titulo = new JLabel("Personaje: "+p.getNombre());
       
-        titulo.setBounds(105,5,400,50);
+        titulo.setBounds(60,5,400,50);
         titulo.setFont(new Font("ComicSans",Font.BOLD,18));
       
         aceptar = new JButton("Aceptar");
