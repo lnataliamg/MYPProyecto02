@@ -1,5 +1,18 @@
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Random;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 public class Jugador{
   private int oskis;
   private ArrayList dados;
@@ -14,6 +27,21 @@ public class Jugador{
   State moviendose;
   State llegandoCasilla;
   State jugando;
+  
+    private Object tiempo = new Object();
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel titulo;
+    private JButton aceptar;
+    
+    private JLabel Oscar;
+    private JLabel Daniel;
+    private JLabel Natalia;
+    private JLabel Ramon;
+    
+    private JLabel lentes;
+    private JLabel gorra;
+    private JLabel maquillaje;
 	/**
 	* Default empty Jugador constructor
 	*/
@@ -23,6 +51,10 @@ public class Jugador{
 
 	/**
 	* Default Jugador constructor
+            * @param oskis
+            * @param dados
+            * @param name
+            * @param personaje
 	*/
 	public Jugador(int oskis, ArrayList dados, String name, Personaje personaje) {
 		super();
@@ -30,10 +62,10 @@ public class Jugador{
 		this.dados = dados;
 		this.name = name;
 		this.personaje = personaje;
-    this.enTurno = new EnTurno();
-    this.moviendose = new Moviendose();
-    this.llegandoCasilla = new LlegandoCasilla();
-    this.jugando = new Jugando();
+                this.enTurno = new EnTurno();
+                this.moviendose = new Moviendose();
+                this.llegandoCasilla = new LlegandoCasilla();
+                this.jugando = new Jugando();
 	}
 
   public void addDado(int tipoDado){
@@ -81,7 +113,7 @@ public class Jugador{
 
 	/**
 	* Sets new value of oskis
-	* @param
+        * @param oskis
 	*/
 	public void setOskis(int oskis) {
 		this.oskis = oskis;
@@ -97,7 +129,7 @@ public class Jugador{
 
 	/**
 	* Sets new value of dados
-	* @param
+        * @param dados
 	*/
 	public void setDados(ArrayList dados) {
 		this.dados = dados;
@@ -221,5 +253,144 @@ public class Jugador{
     public void setState(State state){
       this.state = state;
     }
+    
+    public void mostrarPersonaje(Personaje p){
+        
+        try {
+        
+        frame = new JFrame("Personaje"); //Se crea Ventana con titulo "Minijuego"
+      
+        frame.setSize(300, 300); //Tamaño venta na x,y
+        frame.setLocationRelativeTo(null); //Posicion siempre en el centro
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // cerrar alterminar de ejecutar
+        frame.setResizable(false);
+        frame.setLayout(null); // poner que aparezcan todos los tipos de canvas
+      
+        titulo = new JLabel(p.getNombre());
+      
+        titulo.setBounds(105,5,400,50);
+        titulo.setFont(new Font("ComicSans",Font.BOLD,18));
+      
+        aceptar = new JButton("Aceptar");
+        
+        aceptar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                frame.setVisible(false);
+                frame.dispose();
+                
+                synchronized (tiempo) {
+                    tiempo.notify();
+                }
+            }
+          
+        });
+        aceptar.setBounds(90,230,120,30);
+        
+        // Daniel
+        Daniel = new JLabel();
+        Daniel.setBounds(50,40,200,200);
+        ImageIcon Dan = new ImageIcon("Dany.png");
+        Daniel.setIcon(Dan);
+        
+        // Daniel
+        Natalia = new JLabel();
+        Natalia.setBounds(50,40,200,200);
+        ImageIcon Nat = new ImageIcon("Nati.png");
+        Natalia.setIcon(Nat);
+        
+        // Ramon
+        Ramon = new JLabel();
+        Ramon.setBounds(50,40,200,200);
+        ImageIcon Ram = new ImageIcon("Ramon.png");
+        Ramon.setIcon(Ram);
+        
+        // Oscar
+        Oscar = new JLabel();
+        Oscar.setBounds(50,40,200,200);
+        ImageIcon Osc = new ImageIcon("Oscar.png");
+        Oscar.setIcon(Osc);
+        
+        // lentes
+        lentes = new JLabel();
+        lentes.setBounds(50,40,200,200);
+        ImageIcon len = new ImageIcon("Anteojos.png");
+        lentes.setIcon(len);
+        
+        // gorra
+        gorra = new JLabel();
+        gorra.setBounds(50,40,200,200);
+        ImageIcon gor = new ImageIcon("gorra.png");
+        gorra.setIcon(gor);
+        
+        // maquillaje
+        maquillaje = new JLabel();
+        maquillaje.setBounds(50,40,200,200);
+        ImageIcon maq = new ImageIcon("Maquillaje.png");
+        maquillaje.setIcon(maq);
+        
+        if (p.isLentes()) {
+                frame.add(lentes);
+                frame.setVisible(true);
+                System.out.println("lentes");
+        } 
+        
+        if (p.isMaquillaje()){
+                frame.add(maquillaje);
+                frame.setVisible(true);
+                System.out.println("maquillaje");
+        }
+                
+        if (p.isGorra()) {
+                frame.add(gorra);
+                frame.setVisible(true);
+                System.out.println("gorra");
+        }
+        
+        if (p.getNombre().equalsIgnoreCase("Danyal")) {
+            frame.add(Daniel);
+        } else if (p.getNombre().equalsIgnoreCase("Nataxa")) {
+            frame.add(Natalia);
+        } else if (p.getNombre().equalsIgnoreCase("Osukaru")) {
+            frame.add(Oscar);
+        } else if (p.getNombre().equalsIgnoreCase("Raymond")) {
+            frame.add(Ramon);
+        }
+        
+            switch (p.getTypePersonaje()) {
+                case 1:
+                    frame.add(Daniel);
+                    System.out.println("Daniel");
+                    break;
+                case 2:
+                    frame.add(Ramon);
+                    System.out.println("Ramon");
+                    break;
+                case 3:
+                    frame.add(Natalia);
+                    System.out.println("Natalia");
+                    break;
+                case 4:
+                    frame.add(Oscar);
+                    System.out.println("Oscar");
+                    break;
+                default:
+                    break;
+            }
+        
+        frame.add(titulo);
+        frame.add(aceptar);
+      
+        frame.setVisible(true); // Hace visible la ventana
 
+        synchronized (tiempo) {
+                    tiempo.wait();
+                }
+
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+
+    }
 }

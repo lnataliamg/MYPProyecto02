@@ -35,18 +35,22 @@ public class InicializadorPersonaje{
         switch (opcionPersonaje) {
           case 1:
           System.out.println("Elegiste a -Danyal-");
+          danyal.setTypePersonaje(opcionPersonaje);
           personajeCreado = cambiarCaracteristicasPersonaje(danyal);
           return personajeCreado;
           case 2:
           System.out.println("Elegiste a -Raymond-");
+          raymond.setTypePersonaje(opcionPersonaje);
           personajeCreado = cambiarCaracteristicasPersonaje(raymond);
           return personajeCreado;
           case 3:
           System.out.println("Elegiste a -Nataxa-");
+          nataxa.setTypePersonaje(opcionPersonaje);
           personajeCreado = cambiarCaracteristicasPersonaje(nataxa);
           return personajeCreado;
           case 4:
           System.out.println("Elegiste a -Osukaru-");
+          osukaru.setTypePersonaje(opcionPersonaje);
           personajeCreado = cambiarCaracteristicasPersonaje(osukaru);
           return personajeCreado;
         }
@@ -69,10 +73,10 @@ public class InicializadorPersonaje{
         case 3:
         System.out.println("Elegiste a -Nataxa-");
 
-        return osukaru;
+        return nataxa;
         case 4:
         System.out.println("Elegiste a -Osukaru-");
-        return nataxa;
+        return osukaru;
       }
       break;
     }
@@ -109,6 +113,7 @@ public class InicializadorPersonaje{
     String nuevoNombre = s.nextLine();
 
     personaje.setNombre(nuevoNombre);
+    personaje.setTypePersonaje(personajeOriginal.getTypePersonaje());
     System.out.println("Elige si tu personaje va a tener lentes");
     System.out.println("1. Sí");
     System.out.println("2. No");

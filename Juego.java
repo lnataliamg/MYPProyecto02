@@ -18,8 +18,12 @@ public class Juego{
       Jugador jugador2 = inJugador.crearJugador(nombre2, personaje2);
       jugador2.setTurno(false);
       System.out.println("el nombre del personaje1 es: " + personaje1.getNombre() + "...");
+      
+      jugador1.mostrarPersonaje(personaje1);
 
       System.out.println("el nombre del personaje2 es: " + personaje2.getNombre()+ "...");
+      
+      jugador2.mostrarPersonaje(personaje2);
 
 
       int tipoMapa = inJuego.obtenerTipoMapa();

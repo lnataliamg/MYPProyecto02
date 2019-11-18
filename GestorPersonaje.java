@@ -14,7 +14,7 @@ public class GestorPersonaje{
     osukaru.setNombre("Osukaru");
     osukaru.setMaquillaje(false);
     osukaru.setGorra(false);
-    osukaru.setLentes(false);
+    osukaru.setLentes(true);
     this.addPersonaje(osukaru.getNombre(), osukaru);
 
     Personaje raymond = new Raymond();

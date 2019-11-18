@@ -4,6 +4,15 @@ public abstract class Personaje implements Cloneable{
   protected boolean lentes;
   protected boolean maquillaje;
   protected String nombre;
+  protected int typePersonaje;
+
+    public int getTypePersonaje() {
+        return typePersonaje;
+    }
+
+    public void setTypePersonaje(int typePersonaje) {
+        this.typePersonaje = typePersonaje;
+    }
 
 
 	/**
