@@ -1,6 +1,8 @@
+import java.awt.Color;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -38,6 +40,13 @@ public class Jugador{
     private JLabel lentes;
     private JLabel gorra;
     private JLabel maquillaje;
+    private JButton tDado;
+    private JLabel dado;
+    private JLabel dado46;
+    private JLabel dado68;
+    private JFrame frameWin;
+    private JLabel labelWin;
+    private JButton botonOk;
 	/**
 	* Default empty Jugador constructor
 	*/
@@ -163,25 +172,132 @@ public class Jugador{
 		this.personaje = personaje;
 	}
 
-    public int tirarDado(int tipoDado){
+    public int tirarDado(int tipoDado, int a){
       CalculadoraDado calculadoraDado = null;
       int numCasillas = 0;
       switch(tipoDado){
         case 1:
           calculadoraDado = new CalculadoraDado(new DadoSimple());
           numCasillas = calculadoraDado.calcularDado();
+          mostrarDado(a);
           break;
         case 2:
           calculadoraDado = new CalculadoraDado(new Dado46());
           numCasillas = calculadoraDado.calcularDado();
+          mostrarDado(a);
           break;
         case 3:
           calculadoraDado = new CalculadoraDado(new Dado68());
           numCasillas = calculadoraDado.calcularDado();
+          mostrarDado(a);
           break;
       }
 
       return numCasillas;
+    }
+    
+    public void mostrarDado(int tipoDado){
+        try {
+            
+            frame = new JFrame("Tirando Dado"); //Se crea Ventana con titulo "Minijuego"
+            
+            switch(tipoDado){
+            case 1:
+                titulo = new JLabel("Dado");
+                frame.setSize(300, 350); //Tamaño venta na x,y
+                System.out.println("DadoSimple "+tipoDado);
+            break;
+            case 2:
+                titulo = new JLabel("Dado 4 - 6");
+                frame.setSize(550, 530); //Tamaño venta na x,y
+            break;
+            case 3:
+                titulo = new JLabel("Dado 6 - 8");
+                frame.setSize(420, 490); //Tamaño venta na x,y
+            break;
+            default:
+                System.out.println("Dado incorecto: Error");
+            break;
+        }
+
+        
+
+        
+        frame.setLocationRelativeTo(null); //Posicion siempre en el centro
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // cerrar alterminar de ejecutar
+        //frame.setResizable(false);
+        frame.setLayout(null); // poner que aparezcan todos los tipos de canvas
+      
+        dado = new JLabel();
+        dado46 = new JLabel();
+        dado68 = new JLabel();
+      
+        ImageIcon DS = new ImageIcon("dado.gif");
+        ImageIcon D46 = new ImageIcon("dado46.gif");
+        ImageIcon D68 = new ImageIcon("dado68.gif");
+        
+        dado.setBounds(35, 60, 227, 218);
+        dado.setIcon(DS);
+        
+        dado46.setBounds(25, 60, 500, 390);
+        dado46.setIcon(D46);
+        
+        dado68.setBounds(20, 60, 339, 339);
+        dado68.setIcon(D68);
+        
+        titulo.setBounds(105,15,400,50);
+        titulo.setFont(new Font("ComicSans",Font.BOLD,18));
+      
+        tDado = new JButton("Tirar Dado");
+        
+        tDado.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                frame.setVisible(false);
+                frame.dispose();
+                
+                synchronized (tiempo) {
+                  tiempo.notify();
+                }
+                
+            }
+          
+        });
+        
+        switch(tipoDado){
+            case 1:
+                tDado.setBounds(90,278,120,30);
+                frame.add(dado);
+                System.out.println("Tu dado es Simple");
+            break;
+            case 2:
+                tDado.setBounds(190,450,120,30);
+                frame.add(dado46);
+                System.out.println("Tu dado es Super46");
+            break;
+            case 3:
+                tDado.setBounds(90,410,120,30);
+                frame.add(dado68);
+                System.out.println("Tu dado es Ultra68");
+            break;
+            default:
+                System.out.println("Dado incorecto: Error");
+            break;
+        }
+        
+        frame.add(titulo);
+        frame.add(tDado);
+      
+        frame.setVisible(true); // Hace visible la ventana
+
+        synchronized (tiempo) {
+            tiempo.wait();
+        }
+
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
     }
 
     public void mover(IMapa mapa, int n){
@@ -248,7 +364,7 @@ public class Jugador{
 
     public void setState(State state){
       this.state = state;
-    }
+    }    
     
     public void mostrarPersonaje(Personaje p){
         

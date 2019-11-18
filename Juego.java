@@ -53,7 +53,7 @@ public class Juego{
         System.out.println("------------..-Es turno del jugador 1--..------------");
         jugador1.setTurno(true);
         jugador1.tirarDado(jugador1);
-        System.out.println("El juagdor1 va a avanzar " + jugador1.getAvanceActual());
+        System.out.println("El jugador1 va a avanzar " + jugador1.getAvanceActual());
         jugador1.mover(mapa);
         System.out.println("El jugador1 después de tirar está en la casilla " + jugador1.getPosicionActual());
         //sí avanza
